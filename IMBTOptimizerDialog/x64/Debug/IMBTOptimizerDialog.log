@@ -1,0 +1,91 @@
+﻿  IMBTOptimizerDialog_ImGui.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\xtensor\xutils.hpp(34,9): warning C4005: 'NOEXCEPT': 매크로 재정의
+  (소스 파일 'IMBTOptimizerDialog_ImGui.cpp'을(를) 컴파일하는 중)
+      C:\Program Files\MATLAB\R2024b\extern\include\MatlabExecutionInterface\exception.hpp(14,9):
+      'NOEXCEPT'의 이전 정의를 참조하십시오.
+  
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(178,40): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(179,51): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(180,108): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(180,88): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(181,45): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(182,46): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(183,93): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(183,74): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(379,16): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(380,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(382,85): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(382,52): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(487,61): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(487,47): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(775,55): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(776,55): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(808,96): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(808,67): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(818,100): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(818,71): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(851,116): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(851,79): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(858,15): warning C4312: '형식 캐스트': 'GLuint'에서 더 큰 'ImTextureID'(으)로의 변환입니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(862,15): warning C4312: '형식 캐스트': 'GLuint'에서 더 큰 'ImTextureID'(으)로의 변환입니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(999,246): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(999,217): warning C4244: '인수': 'size_t'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(1343,49): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(1709,23): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(1729,58): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(1730,57): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2046,24): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2051,11): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2055,35): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2060,11): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2113,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2119,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2142,90): warning C4244: '인수': 'int'에서 'const T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2142,90): warning C4244:         with
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2142,90): warning C4244:         [
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2142,90): warning C4244:             T=float
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2142,90): warning C4244:         ]
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2449,25): warning C4267: '초기화 중': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2641,75): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2642,75): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2643,75): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2665,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2722,25): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2723,28): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2737,24): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\IMBTOptimizerDialog_ImGui.cpp(2752,24): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\NdArray\NdArrayCore.hpp(3958,71): warning C4267: '인수': 'size_t'에서 'nc::NdArray<nc::NdArray<dtype,Allocator>::size_type,std::allocator<std::_Vbase>>::size_type'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'IMBTOptimizerDialog_ImGui.cpp'을(를) 컴파일하는 중)
+      D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\NdArray\NdArrayCore.hpp(3958,71):
+      템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+          D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\Functions\ldexp.hpp(74,42):
+          컴파일되는 클래스 템플릿 인스턴스화 'nc::NdArray<nc::uint8,std::allocator<eT>>'에 대한 참조를 확인하세요.
+          with
+          [
+              eT=unsigned char
+          ]
+          D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\NdArray\NdArrayCore.hpp(4075,20):
+          클래스 템플릿 멤버 함수 'nc::NdArray<nc::uint8,std::allocator<eT>> &nc::NdArray<nc::uint8,std::allocator<eT>>::put(nc::NdArray<nc::uint8,std::allocator<eT>>::index_type,const nc::Slice &,const nc::NdArray<nc::uint8,std::allocator<eT>> &)'을(를) 컴파일하는 중입니다.
+          with
+          [
+              eT=unsigned char
+          ]
+              D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\Functions\unpackbits.hpp(81,31):
+              'nc::unpackbitsLittleEndian'에서 'nc::NdArray<nc::uint8,std::allocator<eT>>::put'에 대한 첫 번째 참조를 확인하세요.
+          with
+          [
+              eT=unsigned char
+          ]
+          D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\NumCpp\NdArray\NdArrayCore.hpp(4078,20):
+          컴파일되는 함수 템플릿 인스턴스화 'nc::NdArray<nc::uint8,std::allocator<eT>> &nc::NdArray<nc::uint8,std::allocator<eT>>::put<nc::NdArray<nc::NdArray<dtype,Allocator>::index_type,std::allocator<int>>,nc::NdArray<nc::NdArray<dtype,Allocator>::size_type,std::allocator<std::_Vbase>>,0,0>(const RowIndices &,const ColIndices &,const nc::NdArray<nc::uint8,std::allocator<eT>> &)'에 대한 참조를 확인하세요.
+          with
+          [
+              eT=unsigned char,
+              RowIndices=nc::NdArray<nc::NdArray<dtype,Allocator>::index_type,std::allocator<int>>,
+              ColIndices=nc::NdArray<nc::NdArray<dtype,Allocator>::size_type,std::allocator<std::_Vbase>>
+          ]
+  
+  IMBTOptimizerDialog.vcxproj -> D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\x64\Debug\IMBTOptimizerDialog_d.dll
+  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+  배치 파일이 아닙니다.
