@@ -1,0 +1,329 @@
+clear all; close all; clc;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% This is for IMBT optimization
+%%%%%%  -- Group- and Element-wise Sparsity
+%%%%%%  min. || Ax - y ||2 + lambda* || Wx || 1 + sigma_b(wb*||x||2_1/2)
+%%%%%%                                Hojin Kim, 2022
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Operating variables 
+flag_Group=1;  % Apply Group-Sparsity?
+flag_ovoid=1;  % Optimize Ovoid elements 
+flag_rwt=1;    % Activate Reweighted L1-norm for element-wise sparsity?
+flag_reorder=0;
+
+% Load Matrix A (Dose depposition matrices for PTV and OARs)
+if flag_ovoid==1
+%     load Brachy_Patient5_Dec2020_tandem_ovoid
+    load Brachy_Patient4_Dec2020_tandem_ovoid_BODY_new
+else
+    load Brachy_Patient5_Dec2020_tandem
+end
+tuning= bladder;
+% tuning= ind_bladder;
+% PTV = ind_PTV;
+% bladder = ind_bladder;
+% rectum = ind_rectum;
+% sigmoid = ind_sigmoid
+% bowel = ind_bowel;
+
+
+%%  Matrix A Pre-processing 
+PTV_orig= PTV;
+tuning_org= tuning;
+bladder_orig= bladder;
+rectum_orig= rectum;
+bowel_orig= bowel;
+sigmoid_orig= sigmoid;
+body_orig = body;
+
+mult= 2.5e7; %200/max(PTV_orig(:));  % Scaling 
+
+ind0=find(isnan(PTV));
+ind1=find(isnan(bladder));
+ind2=find(isnan(rectum));
+ind3=find(isnan(sigmoid));
+ind4=find(isnan(bowel));
+ind5=find(isnan(body));
+
+PTV(ind0)=0;
+bladder(ind1)=0;
+rectum(ind2)=0;
+sigmoid(ind3)=0;
+bowel(ind4)=0;
+body(ind5)=0;
+
+PTV= mult*PTV; %(:,1:200); 
+tuning= mult*tuning; %(:,1:200); 
+bladder= mult*bladder; %(:,1:200); 
+rectum= mult*rectum; %(:,1:200);
+bowel= mult*bowel; %(:,1:200); 
+sigmoid= mult*sigmoid; %(:,1:200);
+body=mult*body; %(:,1:200);
+
+PTV0= PTV;
+tuning0= tuning;
+bladder0= bladder;
+rectum0= rectum;
+bowel0= bowel;
+sigmoid0= sigmoid;
+body0= body;
+
+Dptv=50;
+d_PTV0 = [Dptv*ones([size(PTV0,1) 1])];
+ 
+flag_normalize=1;
+dose=0;
+if flag_normalize==1;
+    [PTV d_PTV]= struct_normalize(PTV0,d_PTV0);
+    [ bladder d_bladder ]= struct_normalize(bladder0,dose*ones(size(bladder,1),1));
+    [ rectum d_rectum ]= struct_normalize(rectum0,dose*ones(size(rectum,1),1));
+    [ bowel d_bowel ]= struct_normalize(bowel0,dose*ones(size(bowel,1),1));
+    [ sigmoid d_sigmoid ]= struct_normalize(sigmoid0,dose*ones(size(sigmoid,1),1));
+    [ body d_body ]= struct_normalize(body0,dose*ones(size(body,1),1));
+%     [ tuning d_tuning ]= struct_normalize(tuning0,30*ones(size(tuning,1),1));
+else
+    PTV= PTV0; d_PTV= d_PTV0;
+    bladder= bladder0;
+    rectum= rectum0;
+    bowel= bowel0;
+    sigmoid= sigmoid0;
+    body = body0;
+%     tuning= tuning0;
+end
+
+A_PTV= PTV;
+A_body = body;
+
+d_OAR = [ dose*ones([size(bladder,1) 1]);
+    dose*ones([size(rectum,1) 1]);
+    dose*ones([size(bowel,1) 1]);
+    dose*ones([size(sigmoid,1) 1])];
+   %0*ones([size(tuning,1) 1])];
+   
+m_PTV= size(PTV,1)
+m_OAR= size(d_OAR,1)
+m_body = size(body,1)
+
+
+%% Setting weights of structures, where PTV weight is defined to be 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Recommend weights
+A= [ A_PTV ]; %; A_OAR ];
+d= [ d_PTV ]; %; d_OAR ];
+
+x= zeros(size(PTV,2),1);
+
+AtA1= A'*A; %_PTV'*A_PTV;
+Aty1= A'*d;
+% AtA2= A_OAR'*A_OAR;
+
+MaxIter=1e4;
+alpha=0.8e-4;
+for ii=1:MaxIter
+    x= x - alpha*(AtA1*x-Aty1 );
+    hist_norm(ii)= norm(AtA1*x-Aty1);
+    indx= find(x<0);
+    x(indx)=0;
+end
+
+
+[n1 n2 n3 n4 ]=compute_weight(bladder,rectum,bowel,sigmoid,x);
+
+%%% Recommended Weights for each critical organs
+[ n1 n2 n3 n4 ]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+if flag_ovoid~=1
+    w2=16* [ 0.0662    0.1451    0.1746    0.1682];
+    w2= 24* [ 0.0662/8    0.1451/8    0.1746*1.5    0.1682*2];
+else
+    w2=16* [ 0.0662    0.1451    0.1746    0.1682];
+    w2= 24* [ 0.0662/8    0.1451/8    0.1746*1.5    0.1682*2];
+end
+
+sqrt_coeff= (m_PTV)/ ( sqrt(max(w2))*(m_OAR) )
+coeff= sqrt_coeff^2;
+
+sqrt_coeff*w2(3)
+
+A_OAR = sqrt_coeff* [w2(1)*bladder;
+    w2(2)*rectum;
+    w2(3)*bowel;
+    w2(4)*sigmoid];
+%         w2(5)*tuning];
+%     w(6)*heart];
+
+d_OAR = sqrt_coeff*[ 0*ones([size(bladder,1) 1]);
+        0*ones([size(rectum,1) 1]);
+        0*ones([size(bowel,1) 1]);
+        0*ones([size(sigmoid,1) 1])];
+%         0*ones([size(tuning,1) 1])];
+
+%% Group-sparsity with L2,half-norm + Element-wise sparsity with L1-norm
+% ----- Resulting in x_L1 to be reweighted in subsequent steps
+tol=1e-15;
+
+record_x0=[];
+record_nz=[];
+record_angle=[];
+
+% Hyper-parameters to be controlled
+ts=[ 2 ]; 
+lambdas= [ 100 ]; 
+cs= [10 ]; % 1~20
+
+
+for ii=1:length(ts)
+    for jj=1:length(lambdas) %start_jj:end_jj
+        for kk=1:length(cs)
+
+        tic
+
+        opts.MaxIter= 1e4;  % Max. number of iterations 
+        opts.t=  1/normest(A_PTV).^ts(ii);      % step size in iteration
+        opts.lambda= lambdas(jj);               % Regularizing parameter
+        opts.c= cs(kk);
+        opts.acc=1;                             %% acceleration if 1
+        opts.inv_L1=0;                          %% including L1-norm min. if 1
+
+        opts.L0=0;                  % L2,0_norm (Group-Sparsity)
+        opts.Lhalf=1;               % L2,half_norm (Group-Sparsity)
+        opts.L1=0;                  % L2,1_norm (Group-Sparsity)
+        opts.WW=[];   
+        
+        opts.trunc=613;             % Tandem elements (1~612 columns)
+                                    % Though 982 columns given, 
+                                    % the last 10 elements are assigned to Ovoid
+                                    % only 612 elements out of remaining 972 columns are used in optimization 
+                                    % (considering location of tandem elements)
+
+        THs= opts.t*opts.lambda
+
+        tol=1e-15;
+        iters=10000;
+
+        opts
+        if flag_ovoid==0
+            [ x0 ]= fluence_map_opt_GroupSparsity_Tandem(A_PTV,d_PTV,A_OAR,d_OAR, opts); 
+        else
+            [ x0 ]= fluence_map_opt_GroupSparsity_Tandem_Ovoid(A_PTV,d_PTV,A_OAR,d_OAR, opts); 
+        end
+        ind= find(x0~=0);
+        length(ind);
+
+        record_x0= [ record_x0  x0 ];
+        record_nz= [ record_nz length(ind) ]
+        record_angle= [ record_angle find_active_angle(x0) ]
+        toc
+%             save temp0_CP record_x0 record_nz;
+
+        end
+    end
+end
+
+% save temp5half record_x0 opts
+
+pick=1;
+x_L1= record_x0(:,pick);
+
+%% Group-sparsity with L2,half-norm + Approximated L0-norm (Reweighted L1-norm)
+if flag_rwt==1
+
+    record_rwtx0=[]; record_rwtnz=[]; record_rwtangle=[];
+    ts2=2;
+    lambdas2=200; % 100-300 %lambdas(pick1);
+    cs2=[ 10 ]
+
+    for riter=1:2
+
+        x= x_L1;
+
+        indx= find(x~=0);
+        x2= x(indx);
+        
+        delta= max(x2)/10;      % arbitrarily small value 
+        WW= 1./(x + delta);     % Reweighting matrix W for reweighted L1-norm
+
+        for ii=1:length(ts2)
+            for jj=1:length(lambdas2)  
+                for kk=1:length(cs2)
+
+                tic
+
+                opts.MaxIter= 1e4;
+                opts.t=  1/normest(A_PTV).^ts2(ii);      
+                opts.lambda= lambdas2(jj);
+                opts.c= cs2(kk);
+                
+                opts.acc=1;         %% acceleration if 1
+                opts.inv_L1=1;      %% including L1-norm min. if 1
+
+                opts.WW=WW;
+
+                THs= opts.t*opts.lambda
+
+                opts
+                if flag_ovoid==0
+                    [ x0 ]= fluence_map_opt_GroupSparsity_Tandem(A_PTV,d_PTV,A_OAR,d_OAR, opts); 
+                else
+                    [ x0 ]= fluence_map_opt_GroupSparsity_Tandem_Ovoid(A_PTV,d_PTV,A_OAR,d_OAR, opts); 
+                end
+                ind= find(x0~=0);
+                length(ind);
+
+                record_rwtx0= [ record_rwtx0  x0 ];
+                record_rwtnz= [ record_rwtnz length(ind) ]
+                record_rwtangle= [ record_rwtangle find_active_angle(x0) ]
+                toc
+
+                end
+            end
+        end
+    end
+end
+    
+
+figure(); bar(x0) 
+[ num_angles active_angles ]= find_active_angle(x0);
+
+x_final= record_rwtx0(:,end);
+
+%% DVHs of optimized plan
+if flag_rwt~=1
+    n1=1;
+    x= x_L1;
+else
+    n1=3;
+    x= x_final;
+end
+
+
+% tuning0= sigmoid0;
+[factor1,DVH_PTV1,DVH_OAR11,DVH_OAR21,DVH_OAR31,DVH_OAR41]=...
+   get_DVHs(PTV0,bladder0,rectum0,bowel0,sigmoid0,x,[0:0.1:250],1);
+
+
+num_nonzero= length(find(x~=0))
+num_angles=find_active_angle(x)
+
+body_dose_128 = zeros(128,128,40);
+body_dose_128(ind_bodyd) = body0 * x(:);
+body_dose_512 = imresize3(body_dose_128, [512 512 40]);
+
+
+%%
+function [ num_angles active_angles ]= find_active_angle(x);
+    num_angles=0;
+    seg=floor(length(x)/36);
+    active_angles=zeros(36,1);
+    for ii=1:36;
+        tempx= x( (ii-1)*seg+1:ii*seg,:);
+        indx= find(tempx~=0);
+        if ~isempty(indx);
+            num_angles= num_angles+1; 
+            active_angles(ii)=1;
+        end
+    end
+end
