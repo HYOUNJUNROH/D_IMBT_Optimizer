@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CIMBTOptimizerDlg">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <NestedTypes>
+      <Enum Name="CIMBTOptimizerDlg::__unnamed_enum_0005_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>IMBT_OptimizerDlg.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EACAAAEQAAABAAAAABAAAAAYAAAEBAQABAAAAAAQAAA=</HashCode>
+      <FileName>IMBT_OptimizerDlg.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_plan" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CPlan">
+    <Position X="6.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACkAAgQAAAAAAAAAIAAAAAAAAAAAEQAAhECBBQEQQAA=</HashCode>
+      <FileName>D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\Plan.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_Afterloader" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Afterloader">
+    <Position X="10.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgBAAACAgAAAABBEAAAABEAAAAAAAAAQAAAAAgQgQ=</HashCode>
+      <FileName>D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\Afterloader.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_CommissionedIsotope" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="CommissionedIsotope">
+    <Position X="15.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAICAAiAAAAJEAAAAAAAAAAAAAAAQAAAAAAQAA=</HashCode>
+      <FileName>D:\___03_Workspace\C++\IMBT_optimizer\src\IMBT_Optimizer\IMBTOptimizerDialog\includes\Afterloader.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
