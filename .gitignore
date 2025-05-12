@@ -61,3 +61,6 @@ IMBT_Optimizer/matlab_output_optimization.txt
 *.tlog
 *.log
 IMBTOptimizerDialog/x64/Debug
+IMBT_Optimizer/x64/Debug
+x64/Debug
+.vscode
