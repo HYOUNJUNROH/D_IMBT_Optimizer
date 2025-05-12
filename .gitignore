@@ -56,3 +56,5 @@ x64/Debug/IMBTOptimizerDialog_d.pdb
 x64/Debug/IMBT_Optimizer.pdb
 x64/Release/IMBTOptimizerDialog.pdb
 x64/Release/IMBT_Optimizer.pdb
+IMBT_Optimizer/matlab_output_dose_kernel.txt
+IMBT_Optimizer/matlab_output_optimization.txt
