@@ -184,133 +184,127 @@ void IMBTOptimizerDialog_ImGui::drawGUIWindow(GLuint *CTVoxelTexture, GLuint *do
 	}
 }
 
-//bool IMBTOptimizerDialog_ImGui::showDialog() // Not used
-//{
-//	try
-//	{
-//		int displayW{};
-//		int displayH{};
-//		float contentScaleX = 1.0f;
-//		float contentScaleY = 1.0f;
-//
-//		// GLFW Initialization
-//		glfwInit();
-//		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-//		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-//		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-//		// glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-//		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-//		// glfwWindowHint(GLFW_SCALE_TO_MONITOR, 2); // 4K Monitor
-//
-//		glfwSwapInterval(1);
-//
-//		// Get Monitor Resolution
-//		GLFWmonitor *monitor = glfwGetPrimaryMonitor();
-//		const GLFWvidmode *mode = glfwGetVideoMode(monitor);
-//
-//		// windowSize.x = int(mode->width * 0.8);
-//		// windowSize.y = int(mode->height * 0.8);
-//
-//		GLFWwindow *GUIWindow;
-//		GUIWindow = glfwCreateWindow(int(windowSize.x), int(windowSize.y), "IMBT Optimizer", nullptr, nullptr);
-//		glfwMakeContextCurrent(GUIWindow);
-//
-//		// GL3W Initialization
-//		gl3wInit();
-//
-//		// ImGui Initialization
-//		IMGUI_CHECKVERSION();
-//		ImGui::CreateContext();
-//		ImGuiIO &io = ImGui::GetIO();
-//
-//		ImGui::StyleColorsLight();
-//		ImGuiStyle &style = ImGui::GetStyle();
-//		style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
-//		style.SelectableTextAlign = ImVec2(0.5f, 0.5f);
-//		io.IniFilename = nullptr;
-//		io.ConfigDragClickToInputText = true;
-//
-//		ImGui_ImplGlfw_InitForOpenGL(GUIWindow, true);
-//		ImGui_ImplOpenGL3_Init("#version 460 core");
-//
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 10.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 12.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 16.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 20.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 24.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 28.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 32.f);
-//		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 36.f);
-//
-//		static GLuint CTVoxelTexture{};
-//		glGenTextures(1, &CTVoxelTexture);
-//		glBindTexture(GL_TEXTURE_2D, CTVoxelTexture);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_RED);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_RED);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-//		glBindTexture(GL_TEXTURE_2D, 0);
-//
-//		// Conversion of original data
-//		std::thread thread(&IMBTOptimizerDialog_ImGui::convertDataFromTPS, this, m_pCPlan);
-//		thread.detach();
-//
-//		// Initialization of OpenCL
-//		OpenCLHandler openCLHandler;
-//
-//		while (!glfwWindowShouldClose(GUIWindow))
-//		{
-//			ImGui_ImplOpenGL3_NewFrame();
-//			ImGui_ImplGlfw_NewFrame();
-//			ImGui::NewFrame();
-//
-//			// ImGui::ShowDemoWindow();
-//			//drawGUIWindow(&CTVoxelTexture, m_pCPlan, &openCLHandler);
-//
-//			// Render whole components
-//			ImGui::Render();
-//
-//			glfwMakeContextCurrent(GUIWindow);
-//
-//			glfwGetFramebufferSize(GUIWindow, &displayW, &displayH);
-//			glfwGetWindowContentScale(GUIWindow, &contentScaleX, &contentScaleY);
-//
-//			// Resize Callback
-//			glfwSetWindowRefreshCallback(GUIWindow, window_refresh_callback);
-//			glfwSetFramebufferSizeCallback(GUIWindow, framebuffer_size_callback);
-//
-//			glViewport(0, 0, displayW, displayH);
-//			glClearColor(50.f / 255.f, 61.f / 255.f, 72.f / 255.f, 1.f);
-//			glClear(GL_COLOR_BUFFER_BIT);
-//
-//			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//			glfwSwapBuffers(GUIWindow);
-//
-//			glfwPollEvents();
-//		}
-//
-//		ImGui_ImplOpenGL3_Shutdown();
-//		ImGui_ImplGlfw_Shutdown();
-//		ImGui::DestroyContext();
-//
-//		glfwDestroyWindow(GUIWindow);
-//		glfwTerminate();
-//	}
-//	catch (exception e)
-//	{
-//		showMessageBox("Error", "Can't open the Optimization Dialog");
-//
-//		return false;
-//	}
-//
-//#ifdef USE_MATLAB_ENGINE
-//	std::thread thread(&MatlabEngine::startMatlabEngine);
-//	thread.detach();
-//#endif
-//
-//	return true;
-//}
+#ifdef USE_MATLAB_ENGINE
+bool IMBTOptimizerDialog_ImGui::showDialog() // Not used
+{
+	try
+	{
+		int displayW{};
+		int displayH{};
+		float contentScaleX = 1.0f;
+		float contentScaleY = 1.0f;
+
+		// GLFW Initialization
+		glfwInit();
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		// glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+		// glfwWindowHint(GLFW_SCALE_TO_MONITOR, 2); // 4K Monitor
+
+		glfwSwapInterval(1);
+
+		// Get Monitor Resolution
+		GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+		const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+
+		// windowSize.x = int(mode->width * 0.8);
+		// windowSize.y = int(mode->height * 0.8);
+
+		GLFWwindow *GUIWindow;
+		GUIWindow = glfwCreateWindow(int(windowSize.x), int(windowSize.y), "IMBT Optimizer", nullptr, nullptr);
+		glfwMakeContextCurrent(GUIWindow);
+
+		// GL3W Initialization
+		gl3wInit();
+
+		// ImGui Initialization
+		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
+		ImGuiIO &io = ImGui::GetIO();
+
+		ImGui::StyleColorsLight();
+		ImGuiStyle &style = ImGui::GetStyle();
+		style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
+		style.SelectableTextAlign = ImVec2(0.5f, 0.5f);
+		io.IniFilename = nullptr;
+		io.ConfigDragClickToInputText = true;
+
+		ImGui_ImplGlfw_InitForOpenGL(GUIWindow, true);
+		ImGui_ImplOpenGL3_Init("#version 460 core");
+
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 10.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 12.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 16.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 20.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 24.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 28.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 32.f);
+		io.Fonts->AddFontFromFileTTF("Roboto-Medium.ttf", 36.f);
+
+		static GLuint CTVoxelTexture{};
+		glGenTextures(1, &CTVoxelTexture);
+		glBindTexture(GL_TEXTURE_2D, CTVoxelTexture);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_RED);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_RED);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		// Conversion of original data
+		std::thread thread(&IMBTOptimizerDialog_ImGui::convertDataFromTPS, this, m_pCPlan);
+		thread.detach();
+
+		while (!glfwWindowShouldClose(GUIWindow))
+		{
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			ImGui::NewFrame();
+
+			// ImGui::ShowDemoWindow();
+			drawGUIWindow(&CTVoxelTexture, m_pCPlan);
+
+			// Render whole components
+			ImGui::Render();
+
+			glfwMakeContextCurrent(GUIWindow);
+
+			glfwGetFramebufferSize(GUIWindow, &displayW, &displayH);
+			glfwGetWindowContentScale(GUIWindow, &contentScaleX, &contentScaleY);
+
+			// Resize Callback
+			glfwSetWindowRefreshCallback(GUIWindow, window_refresh_callback);
+			glfwSetFramebufferSizeCallback(GUIWindow, framebuffer_size_callback);
+
+			glViewport(0, 0, displayW, displayH);
+			glClearColor(50.f / 255.f, 61.f / 255.f, 72.f / 255.f, 1.f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+			glfwSwapBuffers(GUIWindow);
+
+			glfwPollEvents();
+		}
+
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
+
+		glfwDestroyWindow(GUIWindow);
+		glfwTerminate();
+	}
+	catch (exception e)
+	{
+		showMessageBox("Error", "Can't open the Optimization Dialog");
+
+		return false;
+	}
+
+	return true;
+}
+#endif
 
 bool IMBTOptimizerDialog_ImGui::initGUI(HWND parentWindow)
 {
