@@ -60,3 +60,4 @@ IMBT_Optimizer/matlab_output_dose_kernel.txt
 IMBT_Optimizer/matlab_output_optimization.txt
 *.tlog
 *.log
+IMBTOptimizerDialog/x64/Debug
