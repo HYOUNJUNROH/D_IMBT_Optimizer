@@ -2868,7 +2868,6 @@ void IMBTOptimizerDialog_ImGui::ConfirmOptimization(CPlan *_pPlan)
 			}
 		}
 	}
-	// OpenCL 의존성 제거 - DVH 계산이 필요하지 않음
 	calculatedDoseContainer.calculatedDoseConfirm = true;
 	*m_CalculatedDoseConfirm = true;
 	m_pDialog->closeDialog();
