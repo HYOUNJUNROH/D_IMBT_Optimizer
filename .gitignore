@@ -64,3 +64,4 @@ IMBTOptimizerDialog/x64/Debug
 IMBT_Optimizer/x64/Debug
 x64/Debug
 .vscode
+*.bak
